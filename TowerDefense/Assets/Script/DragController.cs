@@ -91,7 +91,7 @@ public class DragController : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log("OnPointerDown");
+        //Debug.Log("OnPointerDown");
     }
     
 }
