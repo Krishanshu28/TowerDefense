@@ -12,6 +12,7 @@ public class TowerUpgrade : MonoBehaviour
     private Camera camera;
     private Ray ray;
     private RaycastHit hit;
+    private bool menuCheck;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,11 +35,27 @@ public class TowerUpgrade : MonoBehaviour
 
             if (hit.collider != null)
             {
-                canvas.SetActive(false);
-                upgradeCanvas.SetActive(true);
-
+                menuCheck = true;
             }
+            else
+            {
+                menuCheck = false;
+            }
+
         }
+        if (menuCheck)
+        {
+            canvas.SetActive(false);
+            upgradeCanvas.SetActive(true);
+
+        }
+        else 
+        {
+            canvas.SetActive(true);
+            upgradeCanvas.SetActive(false);
+
+        }
+
     }
 
     void HandleRaycast(Vector2 input)
