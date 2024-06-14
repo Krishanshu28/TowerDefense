@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public GameObject tower;
     public GameObject map;
 
+    public GameObject objectToSpawn;
+
     public Camera cam;
 
     private void Awake()
@@ -35,7 +37,7 @@ public class GameManager : MonoBehaviour
     public void SpawnObjectAtPosition(Vector2 position)
     {
         // Reference to your prefab
-        GameObject objectToSpawn = Resources.Load<GameObject>("Tower1/Circle");
+        //GameObject objectToSpawn = Resources.Load<GameObject>("Tower1/Circle");
 
         // Calculate the tile position (assuming your tiles are 1x1 units)
         Vector2Int tilePosition = new Vector2Int(

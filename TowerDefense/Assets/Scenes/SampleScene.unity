@@ -420,6 +420,7 @@ MonoBehaviour:
   canvas: {fileID: 4036959342535397388}
   tower: {fileID: 4184690439040807596, guid: 6e9c10ea7b011fe4da21ef6abd5b530f, type: 3}
   map: {fileID: 1177973843}
+  objectToSpawn: {fileID: 6491318886209676875, guid: cdc8fc7bed80d074cb7d2de69a3acd50, type: 3}
   cam: {fileID: 519420031}
 --- !u!4 &976255730
 Transform:
