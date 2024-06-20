@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DragController : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler, IPointerDownHandler
+public class DragController : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     [SerializeField] private Canvas canvas;
 
@@ -15,15 +15,17 @@ public class DragController : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
     [NonSerialized]public Image img;
 
     private Vector3 originPos;
-    private bool drag;
+   
     private bool isCreated = true;
 
 
-    
+    public static DragController instance;
     
     private void Awake()
     {
-        
+       
+
+
         rt = GetComponent<RectTransform>();
         
         
@@ -33,7 +35,8 @@ public class DragController : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        drag = true;
+        
+        CameraZoom.instance.drag = false;
         
         img.maskable = false;
     }
@@ -45,17 +48,36 @@ public class DragController : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        CameraZoom.instance.drag = true;
+        // Spawn the prefab at the drop position
         Vector2 screenPosition = eventData.position;
-        // Convert screen position to world position
-        Vector2 worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
+            // Convert screen position to world position
+            Vector2 worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
 
         // You can call your function to spawn the object here
-        GameManager.instance.SpawnObjectAtPosition(worldPosition);
-        //Color c = img.color;
-        //c.a = 0f;
-        //img.color = c;
+        if (IsValidDropPosition(worldPosition))
+        {
+            GameManager.instance.SpawnObjectAtPosition(worldPosition);
+            //Color c = img.color;
+            //c.a = 0f;
+            //img.color = c;
+            
+            rt.anchoredPosition = originPos;
+        }
+        else
+        {
+            print("coll");
+            rt.anchoredPosition = originPos;
+        }
+        
+    }
+    private bool IsValidDropPosition(Vector3 position)
+    {
+        // Check if there is any collider at the given position
+        Collider2D collider = Physics2D.OverlapPoint(position);
 
-        rt.anchoredPosition = originPos;
+        // Return true if there is no collider at the position, meaning it's a valid drop position
+        return collider == null;
     }
 
     /*private void OnTriggerEnter2D(Collider2D other)
@@ -74,7 +96,7 @@ public class DragController : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
         Color c = img.color;
         //c.a = 0.5f;
         //img.color = c;
-    }*/
+    }
 
     private void OnEnable()
     {
@@ -87,11 +109,17 @@ public class DragController : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
         c.a = 1f;
         img.color = c;
 
-    }
+    }*/
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        //Debug.Log("OnPointerDown");
+        //Vector2 screenPosition = eventData.position;
+        // Convert screen position to world position
+        //Vector2 worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
+
+        // You can call your function to spawn the object here
+        //GameManager.instance.SpawnObjectAtPosition(worldPosition);
     }
     
+
 }

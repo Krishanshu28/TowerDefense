@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using Unity.VisualScripting;
+using UnityEngine.Tilemaps;
 
 public class TowerUpgrade : MonoBehaviour
 {
@@ -13,12 +14,37 @@ public class TowerUpgrade : MonoBehaviour
     private Ray ray;
     private RaycastHit hit;
     private bool menuCheck;
+
+
+    private Vector3 offset;
+    private float zCoord;
+    private Tilemap tilemap;
+    private bool isDragging = false;
+    private int touchID; 
+
     // Start is called before the first frame update
     void Start()
     {
         camera = Camera.main;
+        tilemap = FindObjectOfType<Tilemap>();
     }
 
+    //private void Update()
+    //{
+        /*// Handle mouse input
+        if (Input.GetMouseButtonDown(0))
+        {
+            OnMouseDown();
+        }
+        else if (Input.GetMouseButton(0) && isDragging)
+        {
+            OnMouseDrag();
+        }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            isDragging = false;
+        }*/
+    //}
     // Update is called once per frame
     void Update()
     {
@@ -56,6 +82,25 @@ public class TowerUpgrade : MonoBehaviour
 
         }
 
+        // Handle touch input
+        /*if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+
+            if (touch.phase == TouchPhase.Began)
+            {
+                OnTouchDown(touch);
+            }
+            else if (touch.phase == TouchPhase.Moved && isDragging && touch.fingerId == touchID)
+            {
+                OnTouchDrag(touch);
+            }
+            else if (touch.phase == TouchPhase.Ended && touch.fingerId == touchID)
+            {
+                isDragging = false;
+            }
+        }*/
+
     }
 
     void HandleRaycast(Vector2 input)
@@ -67,6 +112,83 @@ public class TowerUpgrade : MonoBehaviour
         }
 
     }
-    
 
+    /*}
+    void OnTouchDown(Touch touch)
+    {
+        Ray ray = Camera.main.ScreenPointToRay(touch.position);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit) && hit.transform == transform)
+        {
+            isDragging = true;
+            touchID = touch.fingerId;
+
+            // Save the distance between the object and the camera
+            zCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
+
+            // Calculate offset
+            offset = gameObject.transform.position - GetTouchAsWorldPoint(touch.position);
+        }
+    }
+
+    private Vector3 GetTouchAsWorldPoint(Vector3 touchPosition)
+    {
+        // Pixel coordinates of touch (x,y)
+        Vector3 touchPoint = touchPosition;
+
+        // z coordinate of game object on screen
+        touchPoint.z = zCoord;
+
+        // Convert it to world points
+        return Camera.main.ScreenToWorldPoint(touchPoint);
+    }
+
+    void OnTouchDrag(Touch touch)
+    {
+        // Update object position with touch position and offset
+        Vector3 targetPosition = GetTouchAsWorldPoint(touch.position) + offset;
+        Vector3Int cellPosition = tilemap.WorldToCell(targetPosition);
+        Vector3 snappedPosition = tilemap.GetCellCenterWorld(cellPosition);
+
+        transform.position = snappedPosition;
+
+    /*void OnMouseDown()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit) && hit.transform == transform)
+        {
+            isDragging = true;
+
+            // Save the distance between the object and the camera
+            zCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
+            zCoord += (zCoord * -1);
+            print(zCoord);
+            // Calculate offset
+            offset = gameObject.transform.position - GetMouseAsWorldPoint();
+        }
+    }
+
+    private Vector3 GetMouseAsWorldPoint()
+    {
+        // Pixel coordinates of mouse (x,y)
+        Vector3 mousePoint = Input.mousePosition;
+
+        // z coordinate of game object on screen
+        mousePoint.z = zCoord;
+
+        // Convert it to world points
+        return Camera.main.ScreenToWorldPoint(mousePoint);
+    }
+
+    void OnMouseDrag()
+    {
+        // Update object position with mouse position and offset
+        Vector3 targetPosition = GetMouseAsWorldPoint() + offset;
+        transform.position = targetPosition;
+    }
+
+    */
 }

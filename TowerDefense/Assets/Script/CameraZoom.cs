@@ -17,6 +17,15 @@ public class CameraZoom : MonoBehaviour
 
     private Camera cam;
 
+    public bool drag = true;
+
+    public static CameraZoom instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     void Start()
     {
         cam = GetComponent<Camera>();
@@ -24,13 +33,20 @@ public class CameraZoom : MonoBehaviour
         {
             Debug.LogError("This script requires an Orthographic Camera.");
         }
+        print(drag);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        HandleZoom();
-        HandleDrag();
+        if (drag)
+        {
+            print(drag);
+            HandleZoom();
+            HandleDrag();
+        }
+            
     }
 
     void HandleZoom()
@@ -73,17 +89,21 @@ public class CameraZoom : MonoBehaviour
 
     void HandleDrag()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            dragOrigin = cam.ScreenToWorldPoint(Input.mousePosition);
-        }
+        
+        
+            if (Input.GetMouseButtonDown(0))
+            {
+                dragOrigin = cam.ScreenToWorldPoint(Input.mousePosition);
+            }
 
-        if (Input.GetMouseButton(0))
-        {
-            Vector3 difference = dragOrigin - cam.ScreenToWorldPoint(Input.mousePosition);
-            cam.transform.position += difference;
-            ClampCamera();
-        }
+            if (Input.GetMouseButton(0))
+            {
+                Vector3 difference = dragOrigin - cam.ScreenToWorldPoint(Input.mousePosition);
+                cam.transform.position += difference;
+                ClampCamera();
+            }
+        
+        
     }
 
     void ClampCamera()
