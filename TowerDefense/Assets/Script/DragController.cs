@@ -58,9 +58,7 @@ public class DragController : MonoBehaviour, IPointerDownHandler, IBeginDragHand
         if (IsValidDropPosition(worldPosition))
         {
             GameManager.instance.SpawnObjectAtPosition(worldPosition);
-            //Color c = img.color;
-            //c.a = 0f;
-            //img.color = c;
+            
             
             rt.anchoredPosition = originPos;
         }
@@ -75,9 +73,14 @@ public class DragController : MonoBehaviour, IPointerDownHandler, IBeginDragHand
     {
         // Check if there is any collider at the given position
         Collider2D collider = Physics2D.OverlapPoint(position);
-
-        // Return true if there is no collider at the position, meaning it's a valid drop position
-        return collider == null;
+        print(collider.tag);
+        if(collider.CompareTag("Placable"))
+        {
+            // Return true if there is no collider at the position, meaning it's a valid drop position
+            return true;
+        }
+        return false;
+        
     }
 
     /*private void OnTriggerEnter2D(Collider2D other)

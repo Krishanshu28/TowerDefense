@@ -123,6 +123,7 @@
 -define:TEXTCORE_FONT_ENGINE_1_5_OR_NEWER
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
+-r:"Assets/Rigg Project/Assets/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2022.3.13f1/Editor/Data/Managed/UnityEngine/UnityEditor.CoreModule.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2022.3.13f1/Editor/Data/Managed/UnityEngine/UnityEditor.DeviceSimulatorModule.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2022.3.13f1/Editor/Data/Managed/UnityEngine/UnityEditor.DiagnosticsModule.dll"
@@ -332,6 +333,9 @@
 -r:"C:/Program Files/Unity/Hub/Editor/2022.3.13f1/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll"
 -r:"Library/PackageCache/com.unity.collections@1.2.4/Unity.Collections.LowLevel.ILSupport/Unity.Collections.LowLevel.ILSupport.dll"
 -r:"Library/PackageCache/com.unity.visualscripting@1.9.1/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll"
+-r:"Library/Bee/artifacts/1300b0aEDbg.dag/AstarPathfindingProject.ref.dll"
+-r:"Library/Bee/artifacts/1300b0aEDbg.dag/AstarPathfindingProjectEditor.ref.dll"
+-r:"Library/Bee/artifacts/1300b0aEDbg.dag/PackageToolsEditor.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/PsdPlugin.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/Unity.2D.Animation.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/Unity.2D.Animation.Runtime.ref.dll"
@@ -396,6 +400,24 @@
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/UnityEngine.UI.ref.dll"
 -analyzer:"C:/Program Files/Unity/Hub/Editor/2022.3.13f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"
 -analyzer:"C:/Program Files/Unity/Hub/Editor/2022.3.13f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
+"Assets/Rigg Project/Assets/Plugins/Array2DEditor/Example/Array2DExampleEnum.cs"
+"Assets/Rigg Project/Assets/Plugins/Array2DEditor/Example/ExampleEnum.cs"
+"Assets/Rigg Project/Assets/Plugins/Array2DEditor/Example/ExampleScript.cs"
+"Assets/Rigg Project/Assets/Plugins/Array2DEditor/Example/ExampleScript2.cs"
+"Assets/Rigg Project/Assets/Plugins/Array2DEditor/Scripts/Array2D.cs"
+"Assets/Rigg Project/Assets/Plugins/Array2DEditor/Scripts/Array2DTypes/BaseTypes/Array2DBool.cs"
+"Assets/Rigg Project/Assets/Plugins/Array2DEditor/Scripts/Array2DTypes/BaseTypes/Array2DFloat.cs"
+"Assets/Rigg Project/Assets/Plugins/Array2DEditor/Scripts/Array2DTypes/BaseTypes/Array2DInt.cs"
+"Assets/Rigg Project/Assets/Plugins/Array2DEditor/Scripts/Array2DTypes/BaseTypes/Array2DString.cs"
+"Assets/Rigg Project/Assets/Plugins/Array2DEditor/Scripts/Array2DTypes/ObjectTypes/Array2DAudioClip.cs"
+"Assets/Rigg Project/Assets/Plugins/Array2DEditor/Scripts/Array2DTypes/ObjectTypes/Array2DSprite.cs"
+"Assets/Rigg Project/Assets/Plugins/Array2DEditor/Scripts/CellRow.cs"
+"Assets/Rigg Project/Assets/Plugins/Array2DEditor/Scripts/CellRowTypes.cs"
+"Assets/Rigg Project/Assets/Plugins/Array2DEditor/Scripts/Consts.cs"
+"Assets/Rigg Project/Assets/Scripts/Bullet.cs"
+"Assets/Rigg Project/Assets/Scripts/Enemy Health.cs"
+"Assets/Rigg Project/Assets/Scripts/Gunner Tower.cs"
+"Assets/Rigg Project/Assets/Scripts/WaveController.cs"
 "Assets/Script/CameraZoom.cs"
 "Assets/Script/DragController.cs"
 "Assets/Script/GameManager.cs"
@@ -434,7 +456,6 @@
 "Assets/TextMesh Pro/Examples & Extras/Scripts/VertexShakeB.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/VertexZoom.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/WarpTextExample.cs"
-"Assets/TutorialInfo/Scripts/Readme.cs"
 -langversion:9.0
 
 /deterministic

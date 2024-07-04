@@ -33,7 +33,7 @@ public class CameraZoom : MonoBehaviour
         {
             Debug.LogError("This script requires an Orthographic Camera.");
         }
-        print(drag);
+        
 
     }
 
@@ -42,7 +42,7 @@ public class CameraZoom : MonoBehaviour
     {
         if (drag)
         {
-            print(drag);
+            
             HandleZoom();
             HandleDrag();
         }
