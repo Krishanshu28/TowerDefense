@@ -71,7 +71,7 @@ public class TowerUpgrade : MonoBehaviour
         }
         if (menuCheck)
         {
-            canvas.SetActive(false);
+            //canvas.SetActive(false);
             upgradeCanvas.SetActive(true);
 
         }

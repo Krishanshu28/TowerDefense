@@ -20,6 +20,10 @@ public class GunnerTower : MonoBehaviour
     private int targetsystem=0;
     public TextMeshProUGUI TargetMessage;
 
+    //Tower UI
+    public Canvas towerUI;
+    bool isTower = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +37,29 @@ public class GunnerTower : MonoBehaviour
         if(PossibleTargets.Count != 0 && Target != null)
         {
             transform.right = Target.transform.position - transform.position;
+        }
+        if (Input.GetMouseButtonDown(0))
+        {
+            
+            // Get the screen position of the mouse click or touch
+            Vector3 screenPosition = Input.mousePosition;
+
+            // Convert the screen position to a world position
+            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
+
+            // Perform a raycast at the world position
+            RaycastHit2D hit = Physics2D.Raycast(worldPosition, Vector2.zero);
+            towerUI = hit.collider.gameObject.GetComponent<Canvas>();
+            if (towerUI != null)
+            {
+                towerUI.enabled = false;
+            }
+            else
+            {
+                print("null");
+                //towerUI.enabled = false;
+            }
+
         }
     }
 

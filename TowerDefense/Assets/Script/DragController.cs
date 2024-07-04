@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DragController : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
+public class DragController : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler, IPointerUpHandler
 {
     [SerializeField] private Canvas canvas;
 
@@ -16,7 +16,7 @@ public class DragController : MonoBehaviour, IPointerDownHandler, IBeginDragHand
 
     private Vector3 originPos;
    
-    private bool isCreated = true;
+    
 
 
     public static DragController instance;
@@ -38,7 +38,6 @@ public class DragController : MonoBehaviour, IPointerDownHandler, IBeginDragHand
         
         CameraZoom.instance.drag = false;
         
-        img.maskable = false;
     }
 
     public void OnDrag(PointerEventData eventData) 
@@ -48,6 +47,7 @@ public class DragController : MonoBehaviour, IPointerDownHandler, IBeginDragHand
 
     public void OnEndDrag(PointerEventData eventData)
     {
+       
         CameraZoom.instance.drag = true;
         // Spawn the prefab at the drop position
         Vector2 screenPosition = eventData.position;
@@ -122,7 +122,13 @@ public class DragController : MonoBehaviour, IPointerDownHandler, IBeginDragHand
 
         // You can call your function to spawn the object here
         //GameManager.instance.SpawnObjectAtPosition(worldPosition);
+        CameraZoom.instance.drag = false;
     }
-    
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        CameraZoom.instance.drag = true;
+    }
+
 
 }
