@@ -9,7 +9,7 @@ using UnityEngine.Tilemaps;
 public class TowerUpgrade : MonoBehaviour
 {
     public GameObject canvas;
-    public GameObject upgradeCanvas;
+    //public CanvasTake upgradeCanvas;
     private Camera camera;
     private Ray ray;
     private RaycastHit hit;
@@ -58,7 +58,7 @@ public class TowerUpgrade : MonoBehaviour
 
             // Perform a raycast at the world position
             RaycastHit2D hit = Physics2D.Raycast(worldPosition, Vector2.zero);
-
+          
             if (hit.collider != null)
             {
                 menuCheck = true;
@@ -67,20 +67,21 @@ public class TowerUpgrade : MonoBehaviour
             {
                 menuCheck = false;
             }
+            if (menuCheck)
+            {
+                //canvas.SetActive(false);
+               // upgradeCanvas.OnActive();
+
+            }
+            else
+            {
+                //canvas.SetActive(true);
+                //upgradeCanvas.OnDisable();
+
+            }
 
         }
-        if (menuCheck)
-        {
-            //canvas.SetActive(false);
-            upgradeCanvas.SetActive(true);
-
-        }
-        else 
-        {
-            canvas.SetActive(true);
-            upgradeCanvas.SetActive(false);
-
-        }
+        
 
         // Handle touch input
         /*if (Input.touchCount > 0)

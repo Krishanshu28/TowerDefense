@@ -28,15 +28,17 @@ public class GameManager : MonoBehaviour
         //GameObject objectToSpawn = Resources.Load<GameObject>("Tower1/Circle");
 
         // Calculate the tile position (assuming your tiles are 1x1 units)
-        Vector2Int tilePosition = new Vector2Int(
-            Mathf.RoundToInt(position.x),
-            Mathf.RoundToInt(position.y)
-        );
+        //Vector2 tilePosition = new Vector2(
+         //   (position.x),
+         //   (position.y)
+       // );
 
         // Convert tile position back to world position
-        Vector2 snappedPosition = new Vector2(tilePosition.x, tilePosition.y);
+        //Vector2 snappedPosition = new Vector2(tilePosition.x, tilePosition.y);
 
         // Instantiate the object at the snapped position
-        Instantiate(objectToSpawn, snappedPosition, Quaternion.identity);
+        Instantiate(objectToSpawn, position, Quaternion.identity);
+       
+
     }
 }

@@ -51,6 +51,7 @@ public class DragController : MonoBehaviour, IPointerDownHandler, IBeginDragHand
         CameraZoom.instance.drag = true;
         // Spawn the prefab at the drop position
         Vector2 screenPosition = eventData.position;
+       
             // Convert screen position to world position
             Vector2 worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
 

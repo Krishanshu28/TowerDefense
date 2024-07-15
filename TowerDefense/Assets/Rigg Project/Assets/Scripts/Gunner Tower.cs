@@ -21,8 +21,8 @@ public class GunnerTower : MonoBehaviour
     public TextMeshProUGUI TargetMessage;
 
     //Tower UI
-    public Canvas towerUI;
-    bool isTower = false;
+    public CanvasTake towerUI;
+    bool isTowerUI = true;
 
     // Start is called before the first frame update
     void Start()
@@ -49,10 +49,21 @@ public class GunnerTower : MonoBehaviour
 
             // Perform a raycast at the world position
             RaycastHit2D hit = Physics2D.Raycast(worldPosition, Vector2.zero);
-            towerUI = hit.collider.gameObject.GetComponent<Canvas>();
+            towerUI = hit.collider.gameObject.GetComponent<CanvasTake>();
             if (towerUI != null)
             {
-                towerUI.enabled = false;
+                if(!isTowerUI  && hit.collider.gameObject.tag =="Tower")
+                {
+                    towerUI.OnActive();
+                    print(hit.collider.gameObject.tag);
+                    isTowerUI =true;
+                }
+                else if(isTowerUI &&   hit.collider.gameObject.tag == "Tower")
+                {
+                    towerUI.OnDisable();
+                    isTowerUI=false;
+                }
+                
             }
             else
             {
